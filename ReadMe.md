@@ -39,6 +39,17 @@ yarn start
 yarn add apollo-boost react-apollo graphql
 ```
 
+### Proxy
+
+Feature: Avoid add localhost in uri, and host to the server localhost url
+
+in package.json
+
+```json
+"proxy": "http://localhost:5000"
+```
+
+
 ### Bootswatch
 
 Bootstrap
