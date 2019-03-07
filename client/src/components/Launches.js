@@ -1,9 +1,11 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 
 // Graphql Tag
 import gql from 'graphql-tag';
 // React Apollo
 import { Query } from 'react-apollo';
+
+import LaunchItem from './LaunchItem'
 
 const LAUNCHES_QUERY = gql `
     query LaunchesQuery {
@@ -19,7 +21,7 @@ const LAUNCHES_QUERY = gql `
 export class Launches extends Component {
   render() {
     return (
-      <div>
+      <Fragment>
         <h1 className="display-4">
             Launches
         </h1>
@@ -27,14 +29,23 @@ export class Launches extends Component {
         <Query query={LAUNCHES_QUERY}>
             {
                 ({ loading, error, data }) => {
-                    if (loading) return <h1>loading</h1>
+                    if (loading) return <h1>loading...</h1>
                     if (error) console.log(error);
                     console.log(data)
-                    return <h1>testing</h1>
+                    return <Fragment>
+                    {
+                        data.launches.map(launch => (
+                            <LaunchItem 
+                                key={launch.flight_number}
+                                launch={launch}
+                            />
+                        ))
+                    }
+                    </Fragment>;
                 }
             }
         </Query>
-      </div>
+      </Fragment>
     )
   }
 }
