@@ -21,6 +21,12 @@ yarn start
 
 (server.js, schema.js)
 
+### Cors
+
+ ```bash
+ yarn add cors
+ ```
+
 
 ### CLIENT SIDE
 --------
