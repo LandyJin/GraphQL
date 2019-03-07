@@ -2,7 +2,12 @@ import React, { Component } from 'react';
 import './App.css';
 import logo from './logo.png';
 
-import Launches from './components/Launches'
+// React Router
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+
+// Components
+import Launches from './components/Launches';
+import Launch from './components/Launch';
 
 // Import Apollo 
 import ApolloClient from "apollo-boost";
@@ -15,10 +20,13 @@ class App extends Component {
   render() {
     return (
       <ApolloProvider client={client}>
-        <div className="container">
-          <img src={logo} alt="logo" />
-          <Launches/>
-        </div>
+        <Router>
+          <div className="container">
+            <img src={logo} alt="logo" />
+            <Route exact path="/" component={ Launches } />
+            <Route path="/launch/:flight_number" component={ Launch } />
+          </div>
+        </Router>
       </ApolloProvider>
     );
   }
