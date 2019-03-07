@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import './App.css';
 import logo from './logo.png';
 
+import Launches from './components/Launches'
+
 // Import Apollo 
 import ApolloClient from "apollo-boost";
 import { ApolloProvider } from "react-apollo";
@@ -15,6 +17,7 @@ class App extends Component {
       <ApolloProvider client={client}>
         <div className="container">
           <img src={logo} alt="logo" />
+          <Launches/>
         </div>
       </ApolloProvider>
     );
